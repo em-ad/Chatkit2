@@ -2,6 +2,7 @@ package com.emad.chatkit2
 
 import android.app.Application
 import androidx.room.Room.databaseBuilder
+import androidx.room.RoomDatabase
 
 public object DbAccessLayer {
 

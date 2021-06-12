@@ -7,6 +7,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_message_sample.view.*
+import java.util.*
 
 class MessageAdapter :
     PagedListAdapter<MessageModel, MessageAdapter.ViewHolder>(MessageDiffCallback) {
@@ -14,7 +15,7 @@ class MessageAdapter :
     override fun onBindViewHolder(holder: MessageAdapter.ViewHolder, position: Int) {
         val message = getItem(position) ?: return
         holder.itemView.textView_message.text = message.text
-        holder.itemView.textView_time.text = message.time.toString()
+        holder.itemView.textView_time.text = Date(message.time).toString()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageAdapter.ViewHolder {

@@ -32,6 +32,11 @@ abstract class ChatDataBase : RoomDatabase() {
                 super.onCreate(db)
                 Log.e("TAG", "onCreate: " + db.path + " " + db.beginTransaction().javaClass.canonicalName )
             }
+
+            override fun onOpen(db: SupportSQLiteDatabase) {
+                super.onOpen(db)
+                Log.e("TAG", "onOpen: " + db.path + " " + db.beginTransaction().javaClass.canonicalName )
+            }
         }
     }
 }
