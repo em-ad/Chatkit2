@@ -26,14 +26,14 @@ class MainActivity : AppCompatActivity() {
     private fun initViewModels() {
         messagesViewModel = ViewModelProvider(this).get(MessagesViewModel::class.java)
         messagesViewModel.liveData.observe(this, Observer {
-            if (adapter.itemCount == 0) {
+            if (adapter.itemCount == 0) { //if adapter is empty, submit and scroll to last
                 adapter.submitList(it, Runnable {
                     recyclerView.scrollToPosition(it.snapshot().size - 1)
                 })
-            } else {
+            } else { //if adapter is not empty, only scroll if the newest data is newer than the last adapter data
                 val time = it.snapshot().last().time
                 val oldTime: Long? = adapter.currentList?.last()?.time
-                if (oldTime != null && time > oldTime)
+                if (oldTime != null && time > oldTime) //new data inserted
                     adapter.submitList(it, Runnable {
                         recyclerView.scrollToPosition(it.snapshot().size - 1)
                     })
