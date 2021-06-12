@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         imageView_send.setOnClickListener(View.OnClickListener {
             var model = MessageModel(UUID.randomUUID().toString())
             model.text = editText_message_input.text.trim().toString()
-            model.time = System.currentTimeMillis().minus(1000000)
+            model.time = System.currentTimeMillis()
             DbAccessLayer.getInstance(application).getChatKit()?.chatDao()?.insert(message = model)
             editText_message_input.text.clear()
         })
